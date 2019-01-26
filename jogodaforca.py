@@ -23,30 +23,30 @@ def intro():
 
         print("O JOGO IRÁ SE INICIAR EM  %d SEGUNDOS!" %i)
         sleep(1)
-        clear()
+        limparATela()
 
-    palavra = montaDicionario()
+    palavra = sortearPalavras()
     letras = []
     letrascertas = []
     letraserradas = []
     tentativas = 0
     desenho1(palavra,letras,letrascertas,letraserradas,tentativas)
 
-#Abre o arquivo onde contém as palavras do dicionário
-def montaDicionario():
+#Abre o arquivo que contém as palavras
+def sortearPalavras():
 
-    dicionario = open("palavras.txt", "r")
+    listapalavras = open("palavras.txt", "r")
     palavras = []
 
-    for i in dicionario:
+    for i in listapalavras:
         #rstrip tira o '\n' do final das palavras
-        p = tiraAcentoPalavras(i.rstrip('\n'))
-        palavras.append(p)
+        palavra = tiraAcentoPalavras(i.rstrip('\n'))
+        palavras.append(palavra)
     
-    dicionario.close()
+    listapalavras.close()
     return selecionaPalavra(palavras)
 
-#Seleciona uma palavra aleatória do dicionário
+#Seleciona uma palavra aleatória da lista de palavras
 def selecionaPalavra(palavras):
 
     return random.choice(palavras)
@@ -59,8 +59,7 @@ def tiraAcentoPalavras(palavra):
 
     return palavraSemAcento
 
-#Limpa a tela
-def clear(): 
+def limparATela(): 
   
     # para windows 
     if name == 'nt': 
@@ -72,7 +71,7 @@ def clear():
 
 def desenho1(palavra,letras,letrascertas,letraserradas,tentativas):
 
-    clear()
+    limparATela()
     print("\t\t          _________")
     print("\t\t          |      \|")
     print("\t\t          |       |")
@@ -87,9 +86,9 @@ def desenho1(palavra,letras,letrascertas,letraserradas,tentativas):
         print("\n\nParabéns! Você acertou!")
         print("A palavra era: %s" %palavra)
         sleep(5)
-        clear()
+        limparATela()
     else:
-        print("\nA palavra é: %s e possui %d letras" %(mostraPalavra(palavra,letras),len(palavra)))
+        print("\nA palavra é: %s e possui %d letras" %(mostraLetrasJaDescobertas(palavra,letras),len(palavra)))
         print("\nLetras certas: ")
         print(" ".join(letrascertas))
         print("Letras erradas: ")
@@ -101,11 +100,11 @@ def desenho1(palavra,letras,letrascertas,letraserradas,tentativas):
             if checaLetra(letra,letras)==False:
                 break
         letras.append(letra.lower())
-        checaPalavra(palavra,letras,letra.lower(),letrascertas,letraserradas,tentativas)
+        checaLetraNaPalavra(palavra,letras,letra.lower(),letrascertas,letraserradas,tentativas)
         
 def desenho2(palavra,letras,letrascertas,letraserradas,tentativas):
 
-    clear()
+    limparATela()
     print("\t\t          _________")
     print("\t\t          |      \|")
     print("\t\t          |       |")
@@ -120,9 +119,9 @@ def desenho2(palavra,letras,letrascertas,letraserradas,tentativas):
         print("\n\nParabéns! Você acertou!")
         print("A palavra era: %s" %palavra)
         sleep(5)
-        clear()
+        limparATela()
     else:
-        print("\nA palavra é: %s e possui %d letras" %(mostraPalavra(palavra,letras),len(palavra)))
+        print("\nA palavra é: %s e possui %d letras" %(mostraLetrasJaDescobertas(palavra,letras),len(palavra)))
         print("\nLetras certas: ")
         print(" ".join(letrascertas))
         print("Letras erradas: ")
@@ -134,11 +133,11 @@ def desenho2(palavra,letras,letrascertas,letraserradas,tentativas):
             if checaLetra(letra,letras)==False:
                 break
         letras.append(letra.lower())
-        checaPalavra(palavra,letras,letra.lower(),letrascertas,letraserradas,tentativas)
+        checaLetraNaPalavra(palavra,letras,letra.lower(),letrascertas,letraserradas,tentativas)
         
 def desenho3(palavra,letras,letrascertas,letraserradas,tentativas):
 
-    clear()
+    limparATela()
     print("\t\t          _________")
     print("\t\t          |      \|")
     print("\t\t          |       |")
@@ -153,9 +152,9 @@ def desenho3(palavra,letras,letrascertas,letraserradas,tentativas):
         print("\n\nParabéns! Você acertou!")
         print("A palavra era: %s" %palavra)
         sleep(5)
-        clear()
+        limparATela()
     else:
-        print("\nA palavra é: %s e possui %d letras" %(mostraPalavra(palavra,letras),len(palavra)))
+        print("\nA palavra é: %s e possui %d letras" %(mostraLetrasJaDescobertas(palavra,letras),len(palavra)))
         print("\nLetras certas: ")
         print(" ".join(letrascertas))
         print("Letras erradas: ")
@@ -167,11 +166,11 @@ def desenho3(palavra,letras,letrascertas,letraserradas,tentativas):
             if checaLetra(letra,letras)==False:
                 break
         letras.append(letra.lower())
-        checaPalavra(palavra,letras,letra.lower(),letrascertas,letraserradas,tentativas)
+        checaLetraNaPalavra(palavra,letras,letra.lower(),letrascertas,letraserradas,tentativas)
         
 def desenho4(palavra,letras,letrascertas,letraserradas,tentativas):
 
-    clear()
+    limparATela()
     print("\t\t          _________")
     print("\t\t          |      \|")
     print("\t\t          |       |")
@@ -186,9 +185,9 @@ def desenho4(palavra,letras,letrascertas,letraserradas,tentativas):
         print("\n\nParabéns! Você acertou!")
         print("A palavra era: %s" %palavra)
         sleep(5)
-        clear()
+        limparATela()
     else:
-        print("\nA palavra é: %s e possui %d letras" %(mostraPalavra(palavra,letras),len(palavra)))
+        print("\nA palavra é: %s e possui %d letras" %(mostraLetrasJaDescobertas(palavra,letras),len(palavra)))
         print("\nLetras certas: ")
         print(" ".join(letrascertas))
         print("Letras erradas: ")
@@ -200,11 +199,11 @@ def desenho4(palavra,letras,letrascertas,letraserradas,tentativas):
             if checaLetra(letra,letras)==False:
                 break
         letras.append(letra.lower())
-        checaPalavra(palavra,letras,letra.lower(),letrascertas,letraserradas,tentativas)
+        checaLetraNaPalavra(palavra,letras,letra.lower(),letrascertas,letraserradas,tentativas)
         
 def desenho5(palavra,letras,letrascertas,letraserradas,tentativas):
 
-    clear()
+    limparATela()
     print("\t\t          _________")
     print("\t\t          |      \|")
     print("\t\t          |       |")
@@ -219,9 +218,9 @@ def desenho5(palavra,letras,letrascertas,letraserradas,tentativas):
         print("\n\nParabéns! Você acertou!")
         print("A palavra era: %s" %palavra)
         sleep(5)
-        clear()
+        limparATela()
     else:
-        print("\nA palavra é: %s e possui %d letras" %(mostraPalavra(palavra,letras),len(palavra)))
+        print("\nA palavra é: %s e possui %d letras" %(mostraLetrasJaDescobertas(palavra,letras),len(palavra)))
         print("\nLetras certas: ")
         print(" ".join(letrascertas))
         print("Letras erradas: ")
@@ -233,11 +232,11 @@ def desenho5(palavra,letras,letrascertas,letraserradas,tentativas):
             if checaLetra(letra,letras)==False:
                 break
         letras.append(letra.lower())
-        checaPalavra(palavra,letras,letra.lower(),letrascertas,letraserradas,tentativas)
+        checaLetraNaPalavra(palavra,letras,letra.lower(),letrascertas,letraserradas,tentativas)
 
 def desenho6(palavra,letras,letrascertas,letraserradas,tentativas):
 
-    clear()
+    limparATela()
     print("\t\t          _________")
     print("\t\t          |      \|")
     print("\t\t          |       |")
@@ -252,9 +251,9 @@ def desenho6(palavra,letras,letrascertas,letraserradas,tentativas):
         print("\n\nParabéns! Você acertou!")
         print("A palavra era: %s" %palavra)
         sleep(5)
-        clear()
+        limparATela()
     else:
-        print("\nA palavra é: %s e possui %d letras" %(mostraPalavra(palavra,letras),len(palavra)))
+        print("\nA palavra é: %s e possui %d letras" %(mostraLetrasJaDescobertas(palavra,letras),len(palavra)))
         print("\nLetras certas: ")
         print(" ".join(letrascertas))
         print("Letras erradas: ")
@@ -266,11 +265,11 @@ def desenho6(palavra,letras,letrascertas,letraserradas,tentativas):
             if checaLetra(letra,letras)==False:
                 break
         letras.append(letra.lower())
-        checaPalavra(palavra,letras,letra.lower(),letrascertas,letraserradas,tentativas)
+        checaLetraNaPalavra(palavra,letras,letra.lower(),letrascertas,letraserradas,tentativas)
 
 def desenho7(palavra,letras,letrascertas,letraserradas,tentativas):
 
-    clear()
+    limparATela()
     print("\t\t          _________")
     print("\t\t          |      \|")
     print("\t\t          |       |")
@@ -286,7 +285,7 @@ def desenho7(palavra,letras,letrascertas,letraserradas,tentativas):
     print("Letras erradas: ")
     print(" ".join(letraserradas))
     sleep(5)
-    clear()
+    limparATela()
 
 #Checa se a letra já foi digitada
 def checaLetra(letra,letras):
@@ -296,8 +295,7 @@ def checaLetra(letra,letras):
     else:
         return False
 
-#Printa a palavra com as letras que já foram descobertas
-def mostraPalavra(palavra,letras):
+def mostraLetrasJaDescobertas(palavra,letras):
 
     p = ''
 
@@ -320,8 +318,7 @@ def checaVitoria(palavra,letras):
     
     return vitoria
 
-#Checa se a palavra digitado pelo jogador está na palavra escolhida
-def checaPalavra(palavra,letras,letra,letrascertas,letraserradas,tentativas):
+def checaLetraNaPalavra(palavra,letras,letra,letrascertas,letraserradas,tentativas):
     
     contem = False
 
@@ -353,7 +350,7 @@ def checaPalavra(palavra,letras,letra,letrascertas,letraserradas,tentativas):
 if __name__ == '__main__':
     
     while True:
-        clear()
+        limparATela()
         intro()
 
         jogar = input("Deseja jogar de novo (S=SIM/N=NAO)? ")
