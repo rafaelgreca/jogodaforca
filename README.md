@@ -1,2 +1,2 @@
 # Jogo da Forca
-## criado por Rafael Greca Vieira
+## criado por Rafael Greca
