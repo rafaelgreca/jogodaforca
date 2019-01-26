@@ -5351,6 +5351,7 @@ papudo
 paquete
 par
 para
+paralelepípedo
 parada
 parado
 paragem
