@@ -44,11 +44,7 @@ def sortearPalavras():
         palavras.append(palavra)
     
     listapalavras.close()
-    return selecionaPalavra(palavras)
-
-#Seleciona uma palavra aleatória da lista de palavras
-def selecionaPalavra(palavras):
-
+    #Seleciona uma palavra aleatória da lista de palavras
     return random.choice(palavras)
 
 #Tira os acentos e caracteres especiais das palavras do dicionário
